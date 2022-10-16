@@ -1,7 +1,7 @@
 #include "verifyWin.h"
 #include "fillBoard.h"
 
-int minimax(int board[3][3], int isMaximizing) {
+int minimax(int **board, int isMaximizing) {
   char result = verifyWin(board);
   
   // printf("%c", result);
@@ -40,7 +40,7 @@ int minimax(int board[3][3], int isMaximizing) {
   }
 }
 
-void bestPlay(int board[3][3]) {
+void bestPlay(int **board) {
   int bestScore = 2000000;
   int xPos = 0;
   int yPos = 0;

@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../utils/printFile.h"
 #include "../utils/clear.h"
@@ -8,7 +9,12 @@
 
 void initialRoute() {
   int option;
-  int board[3][3] = {{ 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }};
+  int **board = malloc(3 * sizeof(int*));
+
+  for(int i = 0; i < 3; i++) {
+    board[i] = (int*) calloc(3, sizeof(int));
+  }
+  
   int turn = 0; 
   Player players[2];
   strcpy(players[0].name, "");

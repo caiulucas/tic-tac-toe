@@ -10,7 +10,7 @@
 #include "saveGame.h"
 #define STR_SIZE 50
 
-int startGame(int board[3][3], int *turn, Player players[2]) { 
+int startGame(int **board, int *turn, Player *players) { 
   char winner = ' ';
 
   while(1) {

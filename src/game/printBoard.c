@@ -46,7 +46,7 @@
 #define TAB_VER "\u2503" // ┃ (vertical)
 #define TAB_MJ  "\u254B" // ╋ (middle-join)
  
-void printBoard(int board[3][3]) {
+void printBoard(int **board) {
   printf("\n");
   for(int i = 0; i < 3; i++) {
     for(int j = 0; j < 3; j++) {

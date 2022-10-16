@@ -1,2 +1,2 @@
 #pragma once
-char verifyWin(int board[3][3]);
+char verifyWin(int **board);

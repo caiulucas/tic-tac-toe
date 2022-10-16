@@ -1,4 +1,4 @@
-char verifyWin(int board[3][3]) {
+char verifyWin(int **board) {
   int sumFirstDiagonal = 0;
   int sumLastDiagonal = 0;
   int tieSum = 0;

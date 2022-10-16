@@ -3,7 +3,7 @@
 #include "../game/startGame.h"
 #include "../types/Player.h"
 
-void startGameRoute(int board[3][3], int *turn, Player players[2], int playersCount) {
+void startGameRoute(int **board, int *turn, Player *players, int playersCount) {
   while(!playersCount) {
     printf("\nDigite o número de jogadores (1 ou 2): ");
     scanf("%d", &playersCount);

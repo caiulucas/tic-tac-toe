@@ -3,7 +3,7 @@
 #include <string.h>
 #include "../types/Player.h"
 
-void loadGame(int board[3][3], int *turn, Player players[2]) {
+void loadGame(int **board, int *turn, Player *players) {
   FILE *save = fopen("game.sav", "r");
   char playersCount = fgetc(save);
   fgetc(save);

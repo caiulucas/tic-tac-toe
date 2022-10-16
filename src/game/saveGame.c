@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "../types/Player.h"
 
-void saveGame(int board[3][3], int turn, Player players[2]) {
+void saveGame(int **board, int turn, Player *players) {
   FILE *save = fopen("game.sav", "w");
 
   if(!players[1].isComputer) {
