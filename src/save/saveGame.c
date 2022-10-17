@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include "../types/Player.h"
 
-void saveGame(int **board, int turn, Player *players) {
-  FILE *save = fopen("game.sav", "w");
+void saveGame(int **board, int turn, Player *players, char *filename) {
+  FILE *save = fopen(filename, "w");
 
   if(!players[1].isComputer) {
     fprintf(save, "2\n");

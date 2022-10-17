@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "../game/startGame.h"
+#include "../game/clearGame.h"
 #include "../types/Player.h"
 
 void startGameRoute(int **board, int *turn, Player *players, int playersCount) {
@@ -34,12 +35,14 @@ void startGameRoute(int **board, int *turn, Player *players, int playersCount) {
   switch(winner) {
     case 'x':
       printf("%s ganhou!", players[0].name);
+      clearGame(board, turn, players);
       break;
     case 'o':
       printf("%s ganhou!", players[1].name);
+      clearGame(board, turn, players);
       break;
     case 't':
+      clearGame(board, turn, players);
       printf("Empate!");
-
   }
 }

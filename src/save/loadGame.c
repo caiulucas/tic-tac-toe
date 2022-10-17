@@ -3,8 +3,8 @@
 #include <string.h>
 #include "../types/Player.h"
 
-void loadGame(int **board, int *turn, Player *players) {
-  FILE *save = fopen("game.sav", "r");
+void loadGame(int **board, int *turn, Player *players, char *filename) {
+  FILE *save = fopen(filename, "r");
   char playersCount = fgetc(save);
   fgetc(save);
   strcpy(players[0].name, "");

@@ -5,7 +5,8 @@
 #include "../utils/printFile.h"
 #include "../utils/clear.h"
 #include "startGameRoute.h"
-#include "../game/loadGame.h"
+#include "../save/loadGame.h"
+#include "../game/ranking.h"
 
 void initialRoute() {
   int option;
@@ -35,18 +36,24 @@ void initialRoute() {
         break;
       case 2:
         clear();
-        loadGame(board, &turn, players);
+        char filename[50];
+
+        printf("Digite o nome do arquivo: ");
+        scanf("%s", filename);
+
+        loadGame(board, &turn, players, filename);
         startGameRoute(board, &turn, players, 1);
         break;
       case 3:
         startGameRoute(board, &turn, players, 1);
         break;
       case 4:
+        clear();
+        showRanking();
         break;
       default:
         clear();
         printf("Opção inválida.");
     }
-    
   }
 }

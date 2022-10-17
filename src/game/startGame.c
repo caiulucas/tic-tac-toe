@@ -22,8 +22,10 @@ int startGame(int **board, int *turn, Player *players) {
 
       if(!strcmp(command, "marcar")) scanf("%d", &pos);
       else if(!strcmp(command, "salvar")) {
-        saveGame(board, *turn, players);
-        break;
+        char filename[50];
+        scanf("%s", filename);
+        saveGame(board, *turn, players, filename);
+        continue;
       }else if(!strcmp(command, "voltar")) break;
       else {
         clear();
