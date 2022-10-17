@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "../game/startGame.h"
-#include "../game/clearGame.h"
+#include "../utils/clearGame.h"
 #include "../types/Player.h"
 
 void startGameRoute(int **board, int *turn, Player *players, int playersCount) {
