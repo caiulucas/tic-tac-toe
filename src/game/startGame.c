@@ -7,7 +7,7 @@
 #include "printBoard.h"
 #include "verifyWin.h"
 #include "minimax.h"
-#include "saveGame.h"
+#include "../save/saveGame.h"
 #define STR_SIZE 50
 
 int startGame(int **board, int *turn, Player *players) { 
