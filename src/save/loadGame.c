@@ -11,22 +11,17 @@ void loadGame(int **board, int *turn, Player *players, char *filename) {
   strcpy(players[1].name, "");
 
   players[0].isComputer = 0;
-  while(!feof(save)) {
-    char c[2];
-    c[1] = '\0';
-    c[0] = fgetc(save);
-    if(c[0] != '\n') strcat(players[0].name, c);
-    else break;
+  fgets(players[0].name, 50, save);
+  for(int i = 0; i < 50; i++) {
+    if(players[0].name[i] == '\n') players[0].name[i] = '\0';
   }
 
   if(playersCount == '2') {
     players[1].isComputer = 0;
-    while(!feof(save)) {
-      char c[2];
-      c[1] = '\0';
-      c[0] = fgetc(save);
-      if(c[0] != '\n') strcat(players[1].name, c);
-      else break;
+
+    fgets(players[1].name, 50, save);
+    for(int i = 0; i < 50; i++) {
+      if(players[1].name[i] == '\n') players[1].name[i] = '\0';
     }
   } else players[1].isComputer = 1;
 
