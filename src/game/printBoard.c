@@ -41,14 +41,13 @@
 #define BG_CYAN(string)    ANSI_BG_COLOR_CYAN    string ANSI_RESET
 #define BG_WHITE(string)   ANSI_BG_COLOR_WHITE   string ANSI_RESET
 
-// caracteres uteis para tabelas
-#define TAB_HOR "\u2501" // ━ (horizontal)
-#define TAB_VER "\u2503" // ┃ (vertical)
-#define TAB_MJ  "\u254B" // ╋ (middle-join)
- 
 void printBoard(int **board) {
   printf("\n");
+  printf("┏━━━┳━━━┳━━━┳━━━┓\n");
+  printf("┃   ┃ 1 ┃ 2 ┃ 3 ┃\n");
+  printf("┣━━━╋━━━╋━━━╋━━━┫\n");
   for(int i = 0; i < 3; i++) {
+    printf("┃ %d ┃", i + 1);
     for(int j = 0; j < 3; j++) {
       switch(board[i][j]) {
         case 1:
@@ -61,12 +60,14 @@ void printBoard(int **board) {
           printf("   ");
       }
       if(j != 2) {
-        printf(TAB_VER);
+        printf("┃");
       }
     }
-    printf("\n");
+    printf("┃\n");
     if(i != 2) {
-      printf(TAB_HOR TAB_HOR TAB_HOR TAB_MJ TAB_HOR TAB_HOR TAB_HOR TAB_MJ TAB_HOR TAB_HOR TAB_HOR "\n");
+      printf("┣━━━╋━━━╋━━━╋━━━┫\n");
     }
   }
+
+  printf("┗━━━┻━━━┻━━━┻━━━┛\n");
 }
