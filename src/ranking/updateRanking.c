@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include "getRankedPlayers.h"
 
-void updateRanking() {
-  int n;
-  RankedPlayer *rankedPlayers = getRankedPlayers(&n);
+void updateRanking(RankedPlayer *rankedPlayers, int n) {
   remove("velha.ini");
   FILE *ranking = fopen("velha.ini", "w");
   fprintf(ranking, "%d\n", n);

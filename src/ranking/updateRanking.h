@@ -1,2 +1,2 @@
 #pragma once
-void updateRanking();
+void updateRanking(RankedPlayer *rankedPlayers, int n);
