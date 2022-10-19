@@ -11,13 +11,10 @@ RankedPlayer* getRankedPlayers(int *n) {
   fgetc(ranking);
 
   for(int i = 0; i < *n; i++) {
-    while(!feof(ranking)) {
-      char c[2];
-      c[1] = '\0';
-      c[0] = fgetc(ranking);
+    fgets(rankedPlayers[i].name, 50, ranking);
 
-      if(c[0] != '\n') strcat(rankedPlayers[i].name, c);
-      else break;
+    for(int j = 0; j < 50; j++) {
+      if(rankedPlayers[i].name[j] == '\n') rankedPlayers[i].name[j] = '\0';
     }
 
     rankedPlayers[i].wins = fgetc(ranking) - '0';
