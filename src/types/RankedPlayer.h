@@ -1,6 +1,6 @@
 #pragma once
 typedef struct {
-  char name[200];
+  char name[50];
   int wins;
   int draws;
   int loses;
