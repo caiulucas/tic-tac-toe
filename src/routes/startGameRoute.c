@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "../game/startGame.h"
 #include "../utils/clearGame.h"
+#include "../ranking/addRankedPlayer.h"
 #include "../types/Player.h"
 
 void startGameRoute(int **board, int *turn, Player *players, int playersCount) {
@@ -31,18 +32,26 @@ void startGameRoute(int **board, int *turn, Player *players, int playersCount) {
   }
 
   int winner = startGame(board, turn, players);
+  int status[2];
 
   switch(winner) {
-    case 'x':
+    case 1:
       printf("%s ganhou!", players[0].name);
-      clearGame(board, turn, players);
+      status[0] = 1;
+      status[1] = -1;
       break;
-    case 'o':
+    case -1:
       printf("%s ganhou!", players[1].name);
-      clearGame(board, turn, players);
+      status[0] = -1;
+      status[1] = 1;
       break;
-    case 't':
-      clearGame(board, turn, players);
+    case 0:
+      status[0] = 0;
+      status[1] = 0;
       printf("Empate!");
   }
+
+  addRankedPlayer(players[0], status[0]);
+  addRankedPlayer(players[1], status[1]);
+  clearGame(board, turn, players);
 }
