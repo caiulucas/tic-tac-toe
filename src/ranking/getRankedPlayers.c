@@ -5,7 +5,7 @@
 
 RankedPlayer* getRankedPlayers(int *n) {
   FILE *ranking = fopen("velha.ini", "r");
-  *n = fgetc(ranking) - '0';
+  fscanf(ranking, "%d", n);
 
   RankedPlayer *rankedPlayers = malloc(*n * sizeof(RankedPlayer));
   fgetc(ranking);
@@ -26,6 +26,5 @@ RankedPlayer* getRankedPlayers(int *n) {
   }
 
   fclose(ranking);
-
   return rankedPlayers;
 }
