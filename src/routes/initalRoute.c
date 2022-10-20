@@ -2,14 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../utils/printFile.h"
 #include "../utils/clear.h"
 #include "startGameRoute.h"
 #include "../save/loadGame.h"
-#include "../game/ranking.h"
+#include "../ranking/showRanking.h"
+#include "../utils/clearGame.h"
+#include "../utils/printTitle.h"
 
 void initialRoute() {
-  int option;
+  char option;
   int **board = malloc(3 * sizeof(int*));
 
   for(int i = 0; i < 3; i++) {
@@ -22,19 +23,20 @@ void initialRoute() {
   strcpy(players[1].name, "");
 
   while(1) {
-    printFile("assets/startRoute.txt");
+    printTitle();
 
     printf("\nEscolha a opção: ");
-    scanf("%d", &option);
+    scanf("%c", &option);
 
     if(!option) break;
 
     switch(option) {
-      case 1:
+      case '1':
         clear();
+        clearGame(board, &turn, players);
         startGameRoute(board, &turn, players, 0);
         break;
-      case 2:
+      case '2':
         clear();
         char filename[50];
 
@@ -44,16 +46,24 @@ void initialRoute() {
         loadGame(board, &turn, players, filename);
         startGameRoute(board, &turn, players, 1);
         break;
-      case 3:
+      case '3':
         startGameRoute(board, &turn, players, 1);
         break;
-      case 4:
+      case '4':
         clear();
         showRanking();
+        char buffer;
+        
+        printf("\nDigite qualquer tecla pra voltar...\n");
+        scanf(" %c", &buffer);
+        clear();
         break;
       default:
         clear();
         printf("Opção inválida.");
     }
   }
+
+  for(int i = 0; i < 3; i++) free(board[i]);
+  free(board); 
 }
