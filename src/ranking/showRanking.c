@@ -32,4 +32,6 @@ void showRanking() {
   printf("┗");
   for(int i = 0; i < 76; i++) printf("━");
   printf("┛");
+
+  free(rankedPlayers);
 }
