@@ -14,15 +14,16 @@ int startGame(int **board, int *turn, Player *players) {
   char winner = ' ';
 
   while(1) {
+    printBoard(board);
     if(!players[*turn].isComputer) {
-      char command[30];
+      char command[6];
       int pos = 0;
       printf("%s, digite o comando: ", players[*turn].name);
       scanf("%s", command);
 
       if(!strcmp(command, "marcar")) scanf("%d", &pos);
       else if(!strcmp(command, "salvar")) {
-        char filename[50];
+        char filename[STR_SIZE];
         scanf("%s", filename);
         saveGame(board, *turn, players, filename);
         continue;
@@ -63,7 +64,6 @@ int startGame(int **board, int *turn, Player *players) {
       *turn = !*turn;
     }
 
-    printBoard(board);
     if(winner != ' ') break;
   }
 
