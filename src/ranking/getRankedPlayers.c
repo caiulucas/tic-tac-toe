@@ -17,11 +17,7 @@ RankedPlayer* getRankedPlayers(int *n) {
       if(rankedPlayers[i].name[j] == '\n') rankedPlayers[i].name[j] = '\0';
     }
 
-    rankedPlayers[i].wins = fgetc(ranking) - '0';
-    fgetc(ranking);
-    rankedPlayers[i].draws = fgetc(ranking) - '0';
-    fgetc(ranking);
-    rankedPlayers[i].loses = fgetc(ranking) - '0';
+    fscanf(ranking, "%d %d %d", &rankedPlayers[i].wins, &rankedPlayers[i].draws, &rankedPlayers[i].loses);
     fgetc(ranking);
   }
 
