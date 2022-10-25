@@ -1,9 +1,12 @@
+// @Author Caio Lucas Pereira da Silva 22.1.4006
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../types/RankedPlayer.h"
 #include "getRankedPlayers.h"
 
 void showRanking() {  
+  // Mostra o ranking formatado
   printf("┏");
   for(int i = 0; i < 76; i++) printf("━");
   printf("┓\n┃");

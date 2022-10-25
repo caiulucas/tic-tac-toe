@@ -1,8 +1,12 @@
+// @Author Caio Lucas Pereira da Silva 22.1.4006
+
 char verifyWin(int **board) {
   int sumFirstDiagonal = 0;
   int sumLastDiagonal = 0;
   int tieSum = 0;
 
+  // O tabuleiro é preenchido com 0 se a casa for vazia, 1 se for X e -1 se for O
+  // Soma-se as 3 direções possíveis e retorna o vencedor caso alguma das somas chegue a 3
   for(int i = 0; i < 3; i++) {
     int sumHorizontal = 0;
     int sumVertical = 0;
@@ -32,6 +36,7 @@ char verifyWin(int **board) {
     ) return 'o';
   }
 
+  // Caso dê empate, retorna 't' de 'tie'
   if(tieSum == 9) return 't';
 
   return ' ';

@@ -10,14 +10,19 @@
 #include "../save/saveGame.h"
 #define STR_SIZE 50
 
-int startGame(int **board, int *turn, Player *players) { 
+char startGame(int **board, int *turn, Player *players) { 
   char winner = ' ';
 
+  // Loop de uma partida em si
   while(1) {
     printBoard(board);
+
+    // Verifica se o jogador é computador
     if(!players[*turn].isComputer) {
       char command[6];
       int pos = 0;
+
+      // Lê o comando digitado
       printf("%s, digite o comando: ", players[*turn].name);
       scanf("%s", command);
 
@@ -42,6 +47,7 @@ int startGame(int **board, int *turn, Player *players) {
       int play = *turn ? -1 : 1; // Se turn = 0, jogada = 1 (X), se não, jogada = -1 (O)
       int hasFilled = fillBoard(board, play, xPos, yPos);
 
+      // Verifica se a posição é ou não válida
       if(hasFilled == -1) {
         clear();
         printf("Jogada inválida!\n");
@@ -59,15 +65,15 @@ int startGame(int **board, int *turn, Player *players) {
         winner = verifyWin(board);
       }  
     } else {
+      // Jogada da I.A.
       bestPlay(board);
       winner = verifyWin(board);
       *turn = !*turn;
     }
 
+    // Termina partida
     if(winner != ' ') break;
   }
 
-  if(winner == 'x') return 1;
-  if(winner == 'o') return -1;
-  return 0;
+  return winner;
 }

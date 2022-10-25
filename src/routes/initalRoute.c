@@ -1,3 +1,5 @@
+// @Author Caio Lucas Pereira da Silva 22.1.4006
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,6 +12,7 @@
 #include "../utils/printTitle.h"
 
 void initialRoute() {
+  // Valores iniciais
   char option;
   int **board = malloc(3 * sizeof(int*));
 
@@ -22,14 +25,17 @@ void initialRoute() {
   strcpy(players[0].name, "");
   strcpy(players[1].name, "");
 
+  // Começa o jogo num loop infinito
   while(1) {
     printTitle();
 
     printf("\nEscolha a opção: ");
     scanf("%c", &option);
 
-    if(!option) break;
+    // Para o jogo
+    if(option == '0') break;
 
+    // Opções
     switch(option) {
       case '1':
         clear();
@@ -47,7 +53,10 @@ void initialRoute() {
         startGameRoute(board, &turn, players, 1);
         break;
       case '3':
-        startGameRoute(board, &turn, players, 1);
+        clear();
+        if(!strcmp(players[0].name, "")) printf("Opção inválida!");
+        else startGameRoute(board, &turn, players, 1);
+        
         break;
       case '4':
         clear();
@@ -64,6 +73,7 @@ void initialRoute() {
     }
   }
 
+  // Limpa as alocações 
   for(int i = 0; i < 3; i++) free(board[i]);
   free(board); 
 }

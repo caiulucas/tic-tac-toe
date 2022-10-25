@@ -1,3 +1,5 @@
+// @Author Caio Lucas Pereira da Silva 22.1.4006
+
 #include <string.h>
 #include "../types/Player.h"
 

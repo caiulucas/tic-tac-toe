@@ -1,3 +1,5 @@
+// @Author Caio Lucas Pereira da Silva 22.1.4006
+
 // status: 0 = draw, 1 = win, -1 = lose
 #include <string.h>
 #include <stdio.h>
@@ -10,10 +12,12 @@
 #include "../ranking/updateRanking.h"
 
 int addRankedPlayer(Player player, int status) {
+  // Valida número de jogadores
   int n;
   RankedPlayer *rankedPlayers = getRankedPlayers(&n);
 
-  for(int i = 0; i < n; i++) {
+  // Atualiza o ranking
+  for(int i = 0; i < n; i++) { 
     if(!strcmp(player.name, rankedPlayers[i].name)) {
       updateRankedPlayer(&rankedPlayers[i], status);
       updateRanking(rankedPlayers, n);
@@ -22,6 +26,7 @@ int addRankedPlayer(Player player, int status) {
     }
   }
 
+  // Adiciona novo jogador caso possível
   if(n < 9) {
     RankedPlayer *newRankedPlayers = malloc((n + 1) * sizeof(RankedPlayer));
     strcpy(newRankedPlayers[n].name, player.name);

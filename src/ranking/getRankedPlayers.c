@@ -1,9 +1,12 @@
+// @Author Caio Lucas Pereira da Silva 22.1.4006
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../types/RankedPlayer.h"
 
 RankedPlayer* getRankedPlayers(int *n) {
+  // Lê o arquivo e retorna os jogadores rankeados
   FILE *ranking = fopen("velha.ini", "r");
   fscanf(ranking, "%d", n);
 
