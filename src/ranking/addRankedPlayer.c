@@ -18,6 +18,7 @@ int addRankedPlayer(Player player, int status) {
 
   // Atualiza o ranking
   for(int i = 0; i < n; i++) { 
+    printf("%s", rankedPlayers[i].name);
     if(!strcmp(player.name, rankedPlayers[i].name)) {
       updateRankedPlayer(&rankedPlayers[i], status);
       updateRanking(rankedPlayers, n);
@@ -27,6 +28,8 @@ int addRankedPlayer(Player player, int status) {
   }
 
   // Adiciona novo jogador caso possível
+  if(player.isComputer) return 0;
+
   if(n <= 9) {
     RankedPlayer *newRankedPlayers = malloc((n + 1) * sizeof(RankedPlayer));
     strcpy(newRankedPlayers[n].name, player.name);
