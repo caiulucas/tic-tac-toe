@@ -27,7 +27,7 @@ int addRankedPlayer(Player player, int status) {
   }
 
   // Adiciona novo jogador caso possível
-  if(n < 9) {
+  if(n <= 9) {
     RankedPlayer *newRankedPlayers = malloc((n + 1) * sizeof(RankedPlayer));
     strcpy(newRankedPlayers[n].name, player.name);
     newRankedPlayers[n].wins = 0;
